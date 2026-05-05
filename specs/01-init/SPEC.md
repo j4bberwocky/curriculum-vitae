@@ -85,6 +85,8 @@ Il repository deve essere così strutturato:
 - README.md # readme che illustra il repo
 ```
 
+Nel repository esiste la directory `_old` (sotto `.gitignore`) dove è presente la directory `Awesome_CV` contentente l'export del mio cv da overleaf e che utilizza il template Awesome_CV.
+
 Principi di ispirazione:
 
 - Pragmatismo: YAGNI e KISS, costruiamo ciò che serve adesso senza over-engineering
