@@ -2,26 +2,119 @@ personal:
   name: Tommaso Cortonesi
   title: Solution Architect
   email: tommaso.cortonesi@gmail.com
+  phone: +39 328 8731860
+  linkedin: linkedin.com/in/tommaso-cortonesi
+  github: github.com/j4bberwocky
 
 summary: >
-  Solution Architect with a background in Java and AWS. Placeholder summary
-  for the MVP — will be replaced with the real content in T2.
+  Current Lead Product & Application Architect at Wolters Kluwer for CCH Tagetik,
+  former Solution Architect at GFT Technologies and Engineering Ingegneria Informatica.
+  16+ years experience specializing in backend and web development in Java environment
+  (JEE and Spring ecosystem), 10+ years experience in leading dev teams. Interested in
+  devising better problem-solving methods for challenging tasks, in architecting,
+  designing, testing and developing the best solution for the customer needs, and in
+  learning new technologies and tools.
 
 experiences:
-  - company: Placeholder Company
-    role: Solution Architect
-    location: Siena, Italy
-    start_date: 2023-01
+  - company: CCH Tagetik
+    role: Lead Application & Product Architect
+    location: Lucca, Italy
+    start_date: 2025
     end_date: present
     responsibilities:
-      - Placeholder responsibility one.
-      - Placeholder responsibility two.
+      - "Architectural Design: create and plan architectural solutions for cloud-hosted SaaS products."
+      - "Technical Leadership: guide and mentor software engineers in implementing architectural designs and strategies."
+      - "Design Development: develop and validate high-level application designs and prototypes."
+      - "Collaboration: work with IT teams on deployment architecture and process automation."
+
+  - company: Allitude
+    role: Lead Solution Architect
+    location: Trento, Italy
+    start_date: 2024
+    end_date: 2025
+    responsibilities:
+      - Project focused on modernizing all core banking services for the bank consortium.
+      - Leader of a group of 3 solution architects.
+      - Led the team in defining technical solutions, estimation and best practices for the modernization of Wealth Management systems.
+      - Integrated modernized systems with legacy services, adopted the BIAN framework for design.
+      - "Technologies: Microservice Architecture with Spring Boot, Spring Batch, Angular, Git, OpenShift."
+
+  - company: Intesa San Paolo — Data Governance Portal 2.0
+    role: Solution Architect and Technical Leader
+    location: Turin, Italy
+    start_date: 2022
+    end_date: 2024
+    responsibilities:
+      - Technical guide for the redesign of the bank data governance portal, with the integration of data governance and data quality tools.
+      - Led 4 remote multi-country teams to develop the front-end layer, back-end API layer and batch layer.
+      - Estimated and planned activities with various stakeholders, providing technical choices.
+      - "Technologies: Microservice Architecture with Spring Boot, Spring Batch, Angular 8, Git, OpenShift."
+
+  - company: Municipality of Florence — Building and Environmental Permits
+    role: Solution Architect
+    location: Florence, Italy
+    start_date: 2019
+    end_date: 2021
+    responsibilities:
+      - Architected, designed and developed a web app to manage building and environmental practices.
+      - Led a team of 4 people.
+      - Estimated and planned activities, providing technical support.
+      - "Technologies: Maven, Spring ecosystem, PrimeFaces, SVN, Docker, Activiti, Alfresco."
+
+  - company: Banca Mediolanum — Services for Financial Advisors
+    role: Senior Solution Developer
+    location: Milan, Italy
+    start_date: 2015
+    end_date: 2019
+    responsibilities:
+      - Analysis, design, development and testing of web applications for bank promoters (investment and insurance products).
+      - Led a team of 8 people in charge of both AM and new feature development.
+      - Estimated and planned activities, providing technical support.
+      - Trained other team members on the technologies in use.
+      - "Technologies: JSP, EJB 3.0, WebLogic 10, Jenkins, Git."
+
+  - company: Municipality of Milan — Educative Services
+    role: Solution Developer
+    location: Milan, Italy
+    start_date: 2013
+    end_date: 2015
+    responsibilities:
+      - Developed, maintained and supported a web application that manages registrations to nursery schools and kindergartens.
+      - "Technologies: JSP, Tomcat, Ant, SVN."
+
+  - company: Banca Monte dei Paschi di Siena — PaschiFace
+    role: Junior Solution Developer
+    location: Siena, Italy
+    start_date: 2010
+    end_date: 2013
+    responsibilities:
+      - Developed backend components (EJB) inside a SOA architecture for bank transfer services.
+      - "Technologies: EJB 3.0, Spring, JBoss, MyBatis, WebSphere AS, SVN."
 
 education:
-  - institution: Placeholder University
-    degree: Placeholder Degree
-    date: 2010
+  - institution: Google Cloud
+    degree: Associate Cloud Engineer
+    date: 2022
+  - institution: Pivotal Software, Inc.
+    degree: Pivotal Certified Spring Professional
+    date: 2020
+  - institution: Amazon Web Services
+    degree: AWS Certified Developer — Associate
+    date: 2022
+  - institution: Oracle
+    degree: Certified Master — Java EE 6 Enterprise Architect
+    date: 2017
+  - institution: University of Siena, Italy
+    degree: M.S. in Mathematics
+    date: 2009
+  - institution: University of Siena, Italy
+    degree: B.S. in Mathematics
+    date: 2006
 
 skills:
   - topic: Programming Languages
-    description: Java, Python
+    description: Java, Go, Python (basic)
+  - topic: Technologies
+    description: Spring, Spring Boot, Tomcat, WebLogic, MyBatis, JPA, Eclipse IDE, Maven, Git, SVN, Docker, Oracle DB, Sybase, AWS, Google Cloud Platform
+  - topic: Soft Skills
+    description: Delivering effective, high-quality software solutions; coordinating, building and leading distributed teams; strong communication skills and ability to work within a distributed team.
