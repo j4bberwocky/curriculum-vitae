@@ -1,0 +1,50 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*,itemsep=2pt,topsep=2pt}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{<<personal.name | e>>}}\\[4pt]
+<<personal.title | e>>\\
+\href{mailto:<<personal.email>>}{<<personal.email | e>>}
+\end{center}
+
+\section*{Summary}
+<<summary | e>>
+
+\section*{Experience}
+<% for exp in experiences %>
+\noindent\textbf{<<exp.role | e>>} \hfill <<exp.start_date | e>> -- <<exp.end_date | e>>\\
+\textit{<<exp.company | e>>}<% if exp.location %>, <<exp.location | e>><% endif %>
+<% if exp.responsibilities %>
+\begin{itemize}
+<% for r in exp.responsibilities %>
+\item <<r | e>>
+<% endfor %>
+\end{itemize}
+<% endif %>
+
+<% endfor %>
+
+\section*{Education}
+<% for edu in education %>
+\noindent\textbf{<<edu.degree | e>>} \hfill <<edu.date | e>>\\
+\textit{<<edu.institution | e>>}
+
+<% endfor %>
+
+\section*{Skills}
+\begin{itemize}
+<% for s in skills %>
+\item \textbf{<<s.topic | e>>}: <<s.description | e>>
+<% endfor %>
+\end{itemize}
+
+\end{document}

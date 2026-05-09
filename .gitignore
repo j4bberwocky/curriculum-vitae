@@ -1,6 +1,23 @@
 # old files
 /_old
 
+# build artifacts
+cv-latex/build/
+cv-web/dist/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# latex
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
 # General
 .DS_Store
 .localized

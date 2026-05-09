@@ -1,0 +1,27 @@
+personal:
+  name: Tommaso Cortonesi
+  title: Solution Architect
+  email: tommaso.cortonesi@gmail.com
+
+summary: >
+  Solution Architect with a background in Java and AWS. Placeholder summary
+  for the MVP — will be replaced with the real content in T2.
+
+experiences:
+  - company: Placeholder Company
+    role: Solution Architect
+    location: Siena, Italy
+    start_date: 2023-01
+    end_date: present
+    responsibilities:
+      - Placeholder responsibility one.
+      - Placeholder responsibility two.
+
+education:
+  - institution: Placeholder University
+    degree: Placeholder Degree
+    date: 2010
+
+skills:
+  - topic: Programming Languages
+    description: Java, Python

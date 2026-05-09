@@ -9,9 +9,10 @@ Scelte non vincolate dalla SPEC, fissate qui per il piano implementativo.
 1. **Linguaggio del renderer** (sia PDF che Web): **Python 3 + Jinja2 + PyYAML**. Motivazione: KISS, parsing YAML e templating in un'unica toolchain leggera, niente build system pesante.
 2. **Generatore sito statico**: **template HTML/CSS scritti a mano + Jinja2**, niente SSG (no Hugo/Zola/Eleventy). Motivazione: il sito è single-page, ogni dipendenza in più è over-engineering rispetto alla SPEC.
 3. **Build orchestrator locale**: **Makefile** con `make pdf`, `make site`, `make all`, `make clean`.
-4. **Compilazione LaTeX in CI**: **`xu-cheng/latex-action`** (GitHub Action che porta TeX Live, già usata in molti repo CV).
-5. **Deploy GitHub Pages**: **`actions/deploy-pages`** ufficiale (no branch `gh-pages`, deploy diretto da artifact).
-6. **Discrepanze fra SPEC.md e CLAUDE.md** (Zola, `content/cv.yaml`, JSON Schema): la SPEC è autoritativa, CLAUDE.md va riallineato (vedi T13).
+4. **Engine LaTeX locale**: **`tectonic`** (single binary, scarica i pacchetti on-demand, già installato sulla macchina di sviluppo). Override via env var `LATEX_ENGINE`.
+5. **Compilazione LaTeX in CI**: **`xu-cheng/latex-action`** (GitHub Action che porta TeX Live, già usata in molti repo CV). Da rivalutare in T10 se conviene allineare la CI a tectonic.
+6. **Deploy GitHub Pages**: **`actions/deploy-pages`** ufficiale (no branch `gh-pages`, deploy diretto da artifact).
+7. **Discrepanze fra SPEC.md e CLAUDE.md** (Zola, `content/cv.yaml`, JSON Schema): la SPEC è autoritativa, CLAUDE.md va riallineato (vedi T13).
 
 ---
 
