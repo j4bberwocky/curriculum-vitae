@@ -118,3 +118,5 @@ skills:
     description: Spring, Spring Boot, Tomcat, WebLogic, MyBatis, JPA, Eclipse IDE, Maven, Git, SVN, Docker, Oracle DB, Sybase, AWS, Google Cloud Platform
   - topic: Soft Skills
     description: Delivering effective, high-quality software solutions; coordinating, building and leading distributed teams; strong communication skills and ability to work within a distributed team.
+
+version: 0.1.0
