@@ -1,50 +1,73 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage[a4paper,margin=2cm]{geometry}
-\usepackage{hyperref}
-\usepackage{enumitem}
-\setlist[itemize]{leftmargin=*,itemsep=2pt,topsep=2pt}
-\pagestyle{empty}
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+\documentclass[11pt,a4paper]{awesome-cv}
+
+\fontdir[fonts/]
+\colorlet{awesome}{awesome-red}
+
+\name{<<personal.first_name | e>>}{<<personal.last_name | e>>}
+<% if personal.title %>\position{<<personal.title | e>>}<% endif %>
+<% if personal.phone %>\mobile{<<personal.phone | e>>}<% endif %>
+<% if personal.email %>\email{<<personal.email>>}<% endif %>
+<% if personal.github_user %>\github{<<personal.github_user>>}<% endif %>
+<% if personal.linkedin_user %>\linkedin{<<personal.linkedin_user>>}<% endif %>
 
 \begin{document}
 
-\begin{center}
-{\LARGE \textbf{<<personal.name | e>>}}\\[4pt]
-<<personal.title | e>>\\
-\href{mailto:<<personal.email>>}{<<personal.email | e>>}
-\end{center}
+\makecvheader
 
-\section*{Summary}
+<% if summary %>
+\cvsection{Summary}
+\begin{cvparagraph}
 <<summary | e>>
-
-\section*{Experience}
-<% for exp in experiences %>
-\noindent\textbf{<<exp.role | e>>} \hfill <<exp.start_date | e>> -- <<exp.end_date | e>>\\
-\textit{<<exp.company | e>>}<% if exp.location %>, <<exp.location | e>><% endif %>
-<% if exp.responsibilities %>
-\begin{itemize}
-<% for r in exp.responsibilities %>
-\item <<r | e>>
-<% endfor %>
-\end{itemize}
+\end{cvparagraph}
 <% endif %>
 
+<% if experiences %>
+\cvsection{Experience}
+\begin{cventries}
+<% for exp in experiences %>
+  \cventry
+    {<<exp.role | e>>}
+    {<<exp.company | e>>}
+    {<<exp.location | e>>}
+    {<<exp.start_date | e>> -- <<exp.end_date | e>>}
+    {
+<% if exp.responsibilities %>
+      \begin{cvitems}
+<% for r in exp.responsibilities %>
+        \item {<<r | e>>}
 <% endfor %>
+      \end{cvitems}
+<% endif %>
+    }
+<% endfor %>
+\end{cventries}
+<% endif %>
 
-\section*{Education}
+<% if education %>
+\cvsection{Education}
+\begin{cventries}
 <% for edu in education %>
-\noindent\textbf{<<edu.degree | e>>} \hfill <<edu.date | e>>\\
-\textit{<<edu.institution | e>>}
-
+  \cventry
+    {<<edu.degree | e>>}
+    {<<edu.institution | e>>}
+    {}
+    {<<edu.date | e>>}
+    {}
 <% endfor %>
+\end{cventries}
+<% endif %>
 
-\section*{Skills}
-\begin{itemize}
+<% if skills %>
+\cvsection{Skills}
+\begin{cvskills}
 <% for s in skills %>
-\item \textbf{<<s.topic | e>>}: <<s.description | e>>
+  \cvskill
+    {<<s.topic | e>>}
+    {<<s.description | e>>}
 <% endfor %>
-\end{itemize}
+\end{cvskills}
+<% endif %>
 
 \end{document}

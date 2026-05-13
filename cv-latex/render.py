@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""T1 MVP: render cv.yaml -> tommaso-cortonesi-cv.pdf using basic LaTeX."""
+"""Render cv.yaml -> tommaso-cortonesi-cv.pdf using the Awesome-CV class."""
 import os
 import shutil
 import subprocess
@@ -36,6 +36,20 @@ def latex_escape(value):
     return s.replace("—", "---").replace("–", "--")
 
 
+def enrich_personal(personal):
+    """Derive fields the Awesome-CV macros need from the YAML shape."""
+    p = dict(personal or {})
+    name = (p.get("name") or "").strip()
+    first, _, last = name.partition(" ")
+    p["first_name"] = first
+    p["last_name"] = last
+    for key in ("linkedin", "github"):
+        v = p.get(key)
+        if v:
+            p[f"{key}_user"] = v.rsplit("/", 1)[-1]
+    return p
+
+
 def main():
     if shutil.which(ENGINE) is None:
         sys.exit(
@@ -44,6 +58,7 @@ def main():
         )
 
     data = yaml.safe_load(CV_YAML.read_text())
+    data["personal"] = enrich_personal(data.get("personal"))
 
     env = Environment(
         loader=FileSystemLoader(str(LATEX_DIR)),
@@ -62,15 +77,22 @@ def main():
     rendered = template.render(**data)
 
     BUILD_DIR.mkdir(exist_ok=True)
-    tex_path = BUILD_DIR / "cv.tex"
+    tex_path = LATEX_DIR / "cv.tex"
     tex_path.write_text(rendered)
 
     engine_name = Path(ENGINE).name
     if engine_name == "tectonic":
-        cmd = [ENGINE, "-c", "minimal", "cv.tex"]
+        cmd = [ENGINE, "-c", "minimal", "-o", str(BUILD_DIR), "cv.tex"]
     else:
-        cmd = [ENGINE, "-interaction=nonstopmode", "-halt-on-error", "cv.tex"]
-    result = subprocess.run(cmd, cwd=BUILD_DIR)
+        cmd = [
+            ENGINE,
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            f"-output-directory={BUILD_DIR}",
+            "cv.tex",
+        ]
+
+    result = subprocess.run(cmd, cwd=LATEX_DIR)
     if result.returncode != 0:
         sys.exit(f"error: {ENGINE} ha fallito (rc={result.returncode})")
 

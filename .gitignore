@@ -3,6 +3,7 @@
 
 # build artifacts
 cv-latex/build/
+cv-latex/cv.tex
 cv-web/dist/
 
 # python
