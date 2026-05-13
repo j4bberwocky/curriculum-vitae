@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""T1 MVP: render cv.yaml -> cv-web/dist/index.html (no styling)."""
+"""Render cv.yaml -> cv-web/dist/index.html and copy static assets."""
+import shutil
 from pathlib import Path
 
 import yaml
@@ -7,6 +8,7 @@ from jinja2 import Environment, FileSystemLoader
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 WEB_DIR = Path(__file__).resolve().parent
+STATIC_DIR = WEB_DIR / "static"
 DIST_DIR = WEB_DIR / "dist"
 CV_YAML = REPO_ROOT / "cv.yaml"
 
@@ -25,6 +27,14 @@ def main():
     rendered = template.render(**data)
 
     DIST_DIR.mkdir(exist_ok=True)
+    if STATIC_DIR.is_dir():
+        for item in STATIC_DIR.iterdir():
+            target = DIST_DIR / item.name
+            if item.is_dir():
+                shutil.copytree(item, target, dirs_exist_ok=True)
+            else:
+                shutil.copy2(item, target)
+
     output = DIST_DIR / "index.html"
     output.write_text(rendered)
     print(f"OK: {output}")
