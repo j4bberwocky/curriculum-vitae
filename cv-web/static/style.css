@@ -122,6 +122,16 @@ article ul li {
   font-weight: 700;
 }
 
+.page-footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-rule);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  letter-spacing: 0.05em;
+}
+
 @media (min-width: 720px) {
   body {
     font-size: 17px;

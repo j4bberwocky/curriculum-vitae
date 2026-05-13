@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Render cv.yaml -> cv-web/dist/index.html and copy static assets."""
 import shutil
+from datetime import datetime
 from pathlib import Path
 
 import yaml
@@ -15,6 +16,7 @@ CV_YAML = REPO_ROOT / "cv.yaml"
 
 def main():
     data = yaml.safe_load(CV_YAML.read_text())
+    data["build_date"] = datetime.now().strftime("%Y-%m")
 
     env = Environment(
         loader=FileSystemLoader(str(WEB_DIR)),
