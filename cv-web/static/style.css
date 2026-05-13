@@ -132,6 +132,16 @@ article ul li {
   letter-spacing: 0.05em;
 }
 
+.page-footer .pdf-link {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.page-footer .sep {
+  margin: 0 0.5rem;
+  opacity: 0.6;
+}
+
 @media (min-width: 720px) {
   body {
     font-size: 17px;

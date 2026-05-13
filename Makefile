@@ -10,6 +10,12 @@ pdf: $(PYTHON)
 
 site: $(PYTHON)
 	$(PYTHON) cv-web/render.py
+	@if [ -f tommaso-cortonesi-cv.pdf ]; then \
+		cp tommaso-cortonesi-cv.pdf cv-web/dist/; \
+		echo "  copied tommaso-cortonesi-cv.pdf to cv-web/dist/"; \
+	else \
+		echo "  WARN: tommaso-cortonesi-cv.pdf not found at repo root; site link will 404 until you run make pdf"; \
+	fi
 
 check-pages: $(PYTHON)
 	$(PYTHON) cv-latex/check_pages.py
