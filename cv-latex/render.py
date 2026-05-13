@@ -4,6 +4,7 @@ import os
 import shutil
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import yaml
@@ -59,6 +60,7 @@ def main():
 
     data = yaml.safe_load(CV_YAML.read_text())
     data["personal"] = enrich_personal(data.get("personal"))
+    data["build_date"] = datetime.now().strftime("%Y-%m")
 
     env = Environment(
         loader=FileSystemLoader(str(LATEX_DIR)),

@@ -12,6 +12,11 @@
 <% if personal.github_user %>\github{<<personal.github_user>>}<% endif %>
 <% if personal.linkedin_user %>\linkedin{<<personal.linkedin_user>>}<% endif %>
 
+\makecvfooter
+  {}
+  {v<<version | e>> --- <<build_date | e>>}
+  {}
+
 \begin{document}
 
 \makecvheader
