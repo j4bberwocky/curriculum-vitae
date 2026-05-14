@@ -1,8 +1,9 @@
 personal:
   name: Tommaso Cortonesi
   title: Solution Architect
-  email: tommaso.cortonesi@gmail.com
-  phone: +39 328 8731860
+  # Unpublished by choice — uncomment to expose in PDF/site outputs.
+  # email: tommaso.cortonesi@gmail.com
+  # phone: +39 328 8731860
   linkedin: linkedin.com/in/tommaso-cortonesi
   github: github.com/j4bberwocky
 

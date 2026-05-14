@@ -422,7 +422,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{istart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{mailto:\@email}{\faEnvelope\ \@email}
@@ -432,7 +432,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{istart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{http://\@homepage}{\faHome\ \@homepage}
@@ -442,7 +442,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{istart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{https://github.com/\@github}{\faGithubSquare\ \@github}
@@ -452,7 +452,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{istart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\ \@stackoverflowname}
@@ -462,7 +462,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{istart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\ \@linkedin}
@@ -472,7 +472,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{istart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{https://twitter.com/\@twitter}{\faTwitter\ \@twitter}
@@ -482,7 +482,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{istart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \faSkype\ \@skype

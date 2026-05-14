@@ -103,3 +103,17 @@ I valori vengono passati ai template come stringhe e renderizzati così come son
 - I caratteri speciali LaTeX (`& % $ # _ { } ~ ^ \\`) sono escaped automaticamente dal filtro `latex_escape`.
 - I valori HTML sono auto-escaped da Jinja, quindi entità come `&` vengono trasformate in `&amp;`.
 - Niente markup nei valori (no markdown, no HTML inline): i renderer trattano tutto come testo.
+
+## Convenzione "commenta per non pubblicare"
+
+Per togliere un campo dall'output (PDF e sito) senza perderne il valore, basta commentarlo nello YAML:
+
+```yaml
+personal:
+  name: Tommaso Cortonesi
+  # email: tommaso.cortonesi@gmail.com   # unpublished
+  # phone: +39 328 8731860               # unpublished
+  linkedin: linkedin.com/in/tommaso-cortonesi
+```
+
+I renderer trattano i campi opzionali con un `{% if %}` Jinja, quindi un campo assente viene saltato senza errori. Per rimetterlo in vita: si tolgono i `#`. Vale per qualsiasi campo `personal.*` opzionale (`email`, `phone`, `linkedin`, `github`, `website`, ...).
