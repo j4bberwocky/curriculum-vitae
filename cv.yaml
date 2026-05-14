@@ -1,6 +1,6 @@
 personal:
   name: Tommaso Cortonesi
-  title: Solution Architect
+  title: Software Architect
   # Unpublished by choice — uncomment to expose in PDF/site outputs.
   # email: tommaso.cortonesi@gmail.com
   # phone: +39 328 8731860
@@ -120,4 +120,4 @@ skills:
   - topic: Soft Skills
     description: Delivering effective, high-quality software solutions; coordinating, building and leading distributed teams; strong communication skills and ability to work within a distributed team.
 
-version: 0.1.0
+version: 0.2.0
