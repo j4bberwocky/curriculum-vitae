@@ -1,0 +1,53 @@
+name: Build PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cv.yaml'
+      - 'cv-latex/**'
+      - 'requirements.txt'
+      - 'Makefile'
+      - '.github/workflows/build-pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-pdf-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install tectonic
+        run: |
+          curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+          sudo mv tectonic /usr/local/bin/
+          tectonic --version
+
+      - name: Build PDF
+        run: make pdf
+
+      - name: Verify page count
+        run: make check-pages
+
+      - name: Commit updated PDF
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tommaso-cortonesi-cv.pdf
+          if git diff --staged --quiet; then
+            echo "PDF unchanged; nothing to commit"
+            exit 0
+          fi
+          git commit -m "ci: rebuild tommaso-cortonesi-cv.pdf [skip ci]"
+          git push
