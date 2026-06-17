@@ -1,0 +1,22 @@
+# Toolchain del progetto CV.
+#
+# Divisione delle responsabilità:
+#   - mise gestisce python e uv (runtime + package manager)
+#   - uv gestisce le dipendenze Python (pyproject.toml + uv.lock)
+#   - tectonic (motore LaTeX) NON è gestito da mise: installalo con Homebrew
+#     in locale (`brew install tectonic`) — in CI è installato via curl.
+#     render.py usa LATEX_ENGINE=tectonic di default.
+#
+# Uso:
+#   brew install tectonic   # una tantum (se non già presente)
+#   mise install            # installa python + uv
+#   make all                # genera PDF + sito
+
+[tools]
+python = "3.13"
+uv = "latest"
+
+[env]
+# Fa sì che uv usi il Python fornito da mise invece di scaricarne uno proprio:
+# mise possiede il runtime, uv possiede solo i pacchetti.
+UV_PYTHON_PREFERENCE = "only-system"

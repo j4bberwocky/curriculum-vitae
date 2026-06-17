@@ -22,10 +22,8 @@ check-pages: $(PYTHON)
 
 install: $(PYTHON)
 
-$(PYTHON): requirements.txt
-	python3 -m venv $(VENV)
-	$(PYTHON) -m pip install --upgrade pip
-	$(PYTHON) -m pip install -r requirements.txt
+$(PYTHON): pyproject.toml
+	uv sync
 	@touch $(PYTHON)
 
 clean:

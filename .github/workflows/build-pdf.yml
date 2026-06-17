@@ -6,7 +6,9 @@ on:
     paths:
       - 'cv.yaml'
       - 'cv-latex/**'
-      - 'requirements.txt'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - 'mise.toml'
       - 'Makefile'
       - '.github/workflows/build-pdf.yml'
   workflow_dispatch:
@@ -24,9 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
+      - uses: jdx/mise-action@v4
 
       - name: Install tectonic
         run: |

@@ -1,0 +1,15 @@
+[project]
+name = "curriculum-vitae"
+version = "0.1.0"
+description = "Generazione del CV (PDF via LaTeX/tectonic e sito web) a partire da cv.yaml"
+requires-python = ">=3.13"
+dependencies = [
+    "PyYAML>=6.0",
+    "Jinja2>=3.1",
+    "pypdf>=4.0",
+]
+
+# Il progetto è un insieme di script (cv-latex/, cv-web/), non un pacchetto
+# distribuibile: niente build, uv gestisce solo l'ambiente e le dipendenze.
+[tool.uv]
+package = false
