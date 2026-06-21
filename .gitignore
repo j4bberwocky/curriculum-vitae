@@ -11,6 +11,9 @@ __pycache__/
 *.pyc
 .venv/
 
+# claude code (per-machine local settings)
+.claude/settings.local.json
+
 # latex
 *.aux
 *.log
