@@ -10,25 +10,30 @@ Schema dati (contratto di `cv.yaml`): [`DATA.md`](DATA.md).
 ## Struttura
 
 ```text
-cv.yaml                      # single source of truth
+.github/workflows/
+  build-deploy.yml           # CI: pipeline unica (test + build PDF + deploy sito)
 cv-latex/                    # renderer + template Awesome-CV per il PDF
+  fonts/                     # Roboto + Source Sans Pro
+  awesome-cv.cls             # vendored, patchato (vedi CLAUDE.md)
+  check_pages.py             # guard "max 2 pagine"
+  fontawesome.sty            # vendored, legacy
   render.py
   template.tex.j2
-  check_pages.py             # guard "max 2 pagine"
-  awesome-cv.cls             # vendored, patchato (vedi DATA.md / TASKS.md T4)
-  fontawesome.sty
-  fonts/
 cv-web/                      # renderer + template per il sito
+  static/
+    style.css                # CSS mobile-first
   render.py
   template.html.j2
-  static/style.css           # CSS mobile-first
-DATA.md                      # schema/contratto di cv.yaml (no validazione)
 tests/                       # unit test dei renderer (pytest)
-.github/workflows/           # CI: build PDF + deploy sito (workflow unico)
+CLAUDE.md                    # guida per assistenti AI
+cv.yaml                      # single source of truth
+DATA.md                      # schema/contratto di cv.yaml (no validazione)
 Makefile                     # orchestratore dei build
 mise.toml                    # toolchain: python + uv
-pyproject.toml + uv.lock     # dipendenze Python (PyYAML, Jinja2, pypdf)
+pyproject.toml               # dipendenze Python (PyYAML, Jinja2, pypdf) + dev (pytest)
+README.md                    # questo file
 tommaso-cortonesi-cv.pdf     # output PDF (versionato)
+uv.lock                      # lockfile delle dipendenze
 ```
 
 ## Prerequisiti
@@ -87,7 +92,7 @@ Pipeline unica = il sito pubblica sempre il PDF della revisione corrente (niente
 
 Setup repository richiesto una sola volta:
 
-- **Settings → Actions → Workflow permissions**: "Read and write permissions" (perché build-pdf committa il PDF indietro).
+- **Settings → Actions → Workflow permissions**: "Read and write permissions" (perché il workflow committa il PDF rigenerato indietro alla root).
 - **Settings → Pages → Source**: "GitHub Actions".
 
 Sito pubblicato: `https://j4bberwocky.github.io/curriculum-vitae/` (attivo dopo il primo deploy verde).

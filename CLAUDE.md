@@ -23,7 +23,7 @@ Schema dati (contratto di `cv.yaml`): [`DATA.md`](DATA.md) alla root. La spec fu
 - **Niente validazione dello YAML**: scelta esplicita della SPEC. Se manca un campo atteso, il render fallisce. Non aggiungere JSON Schema o validator.
 - **PDF ≤ 2 pagine**: vincolo della SPEC enforced da `make check-pages` (script `cv-latex/check_pages.py` con `pypdf`). `make all` lo chiama dopo `make pdf`.
 - **Date** in `cv.yaml`: `YYYY-MM`, `YYYY`, o `"present"`. Passate come stringhe ai template, niente parsing.
-- **Profilo solo software architect, solo inglese, no foto, no foto, no info di contatto sensibili pubblicate**. Per nascondere un campo (es. `email`, `phone`) senza perderne il valore: commentarlo nello YAML. I template usano `{% if %}` su tutti i campi opzionali. Convenzione in [DATA.md](DATA.md#convenzione-commenta-per-non-pubblicare).
+- **Profilo solo software architect, solo inglese, no foto, no info di contatto sensibili pubblicate**. Per nascondere un campo (es. `email`, `phone`) senza perderne il valore: commentarlo nello YAML. I template usano `{% if %}` su tutti i campi opzionali. Convenzione in [DATA.md](DATA.md#convenzione-commenta-per-non-pubblicare).
 - **`version` in `cv.yaml`** (semver, manuale): patch = typo, minor = nuova esperienza/certificazione, major = repositioning. Footer di PDF e sito mostrano `v{version} — {YYYY-MM}` con la data di build calcolata al render.
 
 ## Build commands
@@ -41,26 +41,30 @@ make distclean    # rimuove anche .venv/
 ## Layout del repo
 
 ```
-cv.yaml                       # SoT
-cv-latex/
-  render.py                   # YAML → cv.tex → PDF (subprocess su tectonic)
-  template.tex.j2             # Jinja con delimitatori CUSTOM: << >> e <% %>
-  check_pages.py
-  awesome-cv.cls              # vendored 2015, PATCHATO (vedi sotto)
-  fontawesome.sty             # vendored, legacy
-  fonts/                      # Roboto + Source Sans Pro
-cv-web/
-  render.py                   # YAML → index.html + copia static/ in dist/
-  template.html.j2            # Jinja default delimitatori {{ }} e {% %}
-  static/style.css            # mobile-first, 1 media query @720px
-DATA.md                       # schema/contratto di cv.yaml (no validazione)
-tests/                        # unit test dei renderer (pytest)
 .github/workflows/
   build-deploy.yml            # pipeline unica: test + build PDF + commit + deploy sito
+cv-latex/
+  fonts/                      # Roboto + Source Sans Pro
+  awesome-cv.cls              # vendored 2015, PATCHATO (vedi sotto)
+  check_pages.py
+  fontawesome.sty             # vendored, legacy
+  render.py                   # YAML → cv.tex → PDF (subprocess su tectonic)
+  template.tex.j2             # Jinja con delimitatori CUSTOM: << >> e <% %>
+cv-web/
+  static/
+    style.css                 # mobile-first, 1 media query @720px
+  render.py                   # YAML → index.html + copia static/ in dist/
+  template.html.j2            # Jinja default delimitatori {{ }} e {% %}
+tests/                        # unit test dei renderer (pytest)
+CLAUDE.md                     # questa guida
+cv.yaml                       # SoT
+DATA.md                       # schema/contratto di cv.yaml (no validazione)
 Makefile
 mise.toml                     # toolchain: python + uv
-pyproject.toml + uv.lock      # dipendenze Python
+pyproject.toml                # dipendenze Python (+ dev: pytest)
+README.md
 tommaso-cortonesi-cv.pdf      # output PDF (versionato)
+uv.lock                       # lockfile delle dipendenze
 ```
 
 ## Gotcha — `awesome-cv.cls`
