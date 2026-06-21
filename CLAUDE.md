@@ -16,14 +16,14 @@ CV gestito con [`cv.yaml`](cv.yaml) **alla root** come single source of truth. D
 - **Awesome-CV class** vendored in `cv-latex/awesome-cv.cls` (versione 2015 con patch — vedi sotto).
 - **Toolchain via `mise`** (`mise.toml`): mise gestisce python 3.13 + `uv`; `uv` gestisce le dipendenze (`pyproject.toml` + `uv.lock`). I target Make eseguono `uv sync` al primo run (crea la `.venv/`). `tectonic` NON è gestito da mise (brew in locale, curl in CI).
 
-Specifica funzionale: [`specs/01-init/SPEC.md`](specs/01-init/SPEC.md). Schema dati: [`specs/01-init/DATA.md`](specs/01-init/DATA.md). Piano di lavoro storico: [`specs/01-init/TASKS.md`](specs/01-init/TASKS.md).
+Schema dati (contratto di `cv.yaml`): [`DATA.md`](DATA.md) alla root. La spec funzionale originale e il piano di lavoro storico T1–T13 non sono più nell'albero: vivono nella git history (rimossi nel consolidamento `specs/`).
 
 ## Convenzioni e vincoli
 
 - **Niente validazione dello YAML**: scelta esplicita della SPEC. Se manca un campo atteso, il render fallisce. Non aggiungere JSON Schema o validator.
 - **PDF ≤ 2 pagine**: vincolo della SPEC enforced da `make check-pages` (script `cv-latex/check_pages.py` con `pypdf`). `make all` lo chiama dopo `make pdf`.
 - **Date** in `cv.yaml`: `YYYY-MM`, `YYYY`, o `"present"`. Passate come stringhe ai template, niente parsing.
-- **Profilo solo software architect, solo inglese, no foto, no foto, no info di contatto sensibili pubblicate**. Per nascondere un campo (es. `email`, `phone`) senza perderne il valore: commentarlo nello YAML. I template usano `{% if %}` su tutti i campi opzionali. Convenzione in [DATA.md](specs/01-init/DATA.md#convenzione-commenta-per-non-pubblicare).
+- **Profilo solo software architect, solo inglese, no foto, no foto, no info di contatto sensibili pubblicate**. Per nascondere un campo (es. `email`, `phone`) senza perderne il valore: commentarlo nello YAML. I template usano `{% if %}` su tutti i campi opzionali. Convenzione in [DATA.md](DATA.md#convenzione-commenta-per-non-pubblicare).
 - **`version` in `cv.yaml`** (semver, manuale): patch = typo, minor = nuova esperienza/certificazione, major = repositioning. Footer di PDF e sito mostrano `v{version} — {YYYY-MM}` con la data di build calcolata al render.
 
 ## Build commands
@@ -33,6 +33,7 @@ make all          # pdf + check-pages + site
 make pdf          # tommaso-cortonesi-cv.pdf alla root
 make site         # cv-web/dist/ (incluso copia del PDF dentro dist/)
 make check-pages  # fail se PDF > 2 pagine
+make test         # unit test dei renderer (pytest)
 make clean        # rimuove build artifacts
 make distclean    # rimuove anche .venv/
 ```
@@ -52,9 +53,10 @@ cv-web/
   render.py                   # YAML → index.html + copia static/ in dist/
   template.html.j2            # Jinja default delimitatori {{ }} e {% %}
   static/style.css            # mobile-first, 1 media query @720px
-specs/01-init/                # SPEC.md, DATA.md, TASKS.md
+DATA.md                       # schema/contratto di cv.yaml (no validazione)
+tests/                        # unit test dei renderer (pytest)
 .github/workflows/
-  build-deploy.yml            # pipeline unica: build PDF + commit + deploy sito
+  build-deploy.yml            # pipeline unica: test + build PDF + commit + deploy sito
 Makefile
 mise.toml                     # toolchain: python + uv
 pyproject.toml + uv.lock      # dipendenze Python
@@ -81,4 +83,4 @@ Default `tectonic`. La CLI di tectonic è diversa da pdflatex: `render.py` ha un
 
 ## Memory hygiene
 
-La memoria persistente in `~/.claude/projects/.../memory/` contiene un `project_context.md` che potrebbe essere vecchio. Stato attuale (post-T13): `cv.yaml` alla root, Python+Jinja per il sito (no Zola), nessuna validazione, repo feature-complete sui task T1–T13 di SPEC 01-init.
+La memoria persistente in `~/.claude/projects/.../memory/` contiene un `project_context.md` che potrebbe essere vecchio. Stato attuale: `cv.yaml` alla root, Python+Jinja per il sito (no Zola), nessuna validazione, toolchain mise+uv, CI in un workflow unico (`build-deploy.yml`), schema in `DATA.md` alla root (cartella `specs/` rimossa, storia in git).

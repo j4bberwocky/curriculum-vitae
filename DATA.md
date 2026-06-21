@@ -1,6 +1,6 @@
 # Struttura di `cv.yaml`
 
-Documento descrittivo della forma attesa del file [`cv.yaml`](../../cv.yaml). **Non è uno schema formale**: non c'è validazione automatica, se manca un campo atteso o cambia tipo i renderer in [`cv-latex/`](../../cv-latex/) e [`cv-web/`](../../cv-web/) si rompono — è una scelta esplicita di SPEC ("YAGNI/KISS, niente validazione").
+Documento descrittivo della forma attesa del file [`cv.yaml`](cv.yaml). **Non è uno schema formale**: non c'è validazione automatica, se manca un campo atteso o cambia tipo i renderer in [`cv-latex/`](cv-latex/) e [`cv-web/`](cv-web/) si rompono — scelta esplicita ("YAGNI/KISS, niente validazione").
 
 Le sezioni di primo livello sono sei: `personal`, `summary`, `experiences`, `education`, `skills`, `version`.
 
@@ -81,7 +81,7 @@ Versione del **contenuto** del CV (non del software che lo genera). Formato semv
 - **minor**: nuova esperienza, nuova certificazione, summary riscritto.
 - **major**: cambio sostanziale di posizionamento (es. shift di carriera).
 
-Compare nel footer del PDF e del sito (T6, T8) insieme alla data di build in formato `YYYY-MM`.
+Compare nel footer del PDF e del sito insieme alla data di build in formato `YYYY-MM`.
 
 ```yaml
 version: 0.1.0

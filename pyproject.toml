@@ -13,3 +13,9 @@ dependencies = [
 # distribuibile: niente build, uv gestisce solo l'ambiente e le dipendenze.
 [tool.uv]
 package = false
+
+# Dipendenze di sviluppo (installate da `uv sync` di default, incluso in CI).
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]

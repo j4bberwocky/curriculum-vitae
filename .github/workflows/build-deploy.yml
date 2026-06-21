@@ -12,6 +12,7 @@ on:
       - 'cv.yaml'
       - 'cv-latex/**'
       - 'cv-web/**'
+      - 'tests/**'
       - 'pyproject.toml'
       - 'uv.lock'
       - 'mise.toml'
@@ -39,10 +40,22 @@ jobs:
       - uses: jdx/mise-action@v4
 
       - name: Install tectonic
+        env:
+          # Release ufficiale pinnata + verifica SHA-256 (no curl|sh verso terzi).
+          # Per aggiornare: bump versione e ricalcola lo sha del tarball linux-gnu x86_64.
+          TECTONIC_VERSION: "0.16.9"
+          TECTONIC_SHA256: "f3c825128095dc3399ea11c08c18035b33050a216930c295c79e8eb11bd21de4"
         run: |
-          curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+          url="https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%40${TECTONIC_VERSION}/tectonic-${TECTONIC_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+          curl --proto '=https' --tlsv1.2 -fsSL -o tectonic.tar.gz "$url"
+          echo "${TECTONIC_SHA256}  tectonic.tar.gz" | sha256sum -c -
+          tar xzf tectonic.tar.gz
           sudo mv tectonic /usr/local/bin/
+          rm tectonic.tar.gz
           tectonic --version
+
+      - name: Run tests
+        run: make test
 
       - name: Build PDF
         run: make pdf
