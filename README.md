@@ -5,7 +5,7 @@ Repository per gestire il mio CV. Single source of truth: [`cv.yaml`](cv.yaml). 
 - **PDF** in stile Awesome-CV → [`tommaso-cortonesi-cv.pdf`](tommaso-cortonesi-cv.pdf) alla root (versionato)
 - **Sito web statico** responsive → pubblicato su GitHub Pages
 
-Specifica funzionale: [`specs/01-init/SPEC.md`](specs/01-init/SPEC.md). Schema dati: [`specs/01-init/DATA.md`](specs/01-init/DATA.md). Piano di lavoro: [`specs/01-init/TASKS.md`](specs/01-init/TASKS.md).
+Schema dati (contratto di `cv.yaml`): [`DATA.md`](DATA.md).
 
 ## Struttura
 
@@ -22,7 +22,8 @@ cv-web/                      # renderer + template per il sito
   render.py
   template.html.j2
   static/style.css           # CSS mobile-first
-specs/                       # specifiche e piani di lavoro
+DATA.md                      # schema/contratto di cv.yaml (no validazione)
+tests/                       # unit test dei renderer (pytest)
 .github/workflows/           # CI: build PDF + deploy sito (workflow unico)
 Makefile                     # orchestratore dei build
 mise.toml                    # toolchain: python + uv
@@ -55,6 +56,7 @@ make all         # PDF + check pagine + sito (catena completa)
 make pdf         # solo PDF -> tommaso-cortonesi-cv.pdf alla root
 make site        # solo sito -> cv-web/dist/ (copia anche il PDF dentro dist/)
 make check-pages # verifica che il PDF non superi 2 pagine
+make test        # unit test dei renderer (pytest)
 make clean       # rimuove cv-latex/build, cv-web/dist, tommaso-cortonesi-cv.pdf
 make distclean   # rimuove anche .venv/
 ```
@@ -68,11 +70,11 @@ cd cv-web/dist && python3 -m http.server 8000
 
 ## Modificare il CV
 
-Il contenuto vive interamente in [`cv.yaml`](cv.yaml); la struttura attesa è in [`specs/01-init/DATA.md`](specs/01-init/DATA.md). Niente validazione: se manca un campo atteso, la build si rompe (scelta esplicita della SPEC).
+Il contenuto vive interamente in [`cv.yaml`](cv.yaml); la struttura attesa è in [`DATA.md`](DATA.md). Niente validazione: se manca un campo atteso, la build si rompe (scelta esplicita).
 
 **Bump della versione**: campo `version` in fondo a `cv.yaml`, semver `major.minor.patch`. Convenzione: patch = typo/riformulazioni, minor = nuova esperienza/certificazione, major = repositioning. La versione compare nel footer del PDF e del sito accanto alla data di build (`YYYY-MM`).
 
-**Nascondere un campo dall'output** (es. email, phone) senza perderne il valore: commentarlo nello YAML. Convenzione documentata in [DATA.md](specs/01-init/DATA.md#convenzione-commenta-per-non-pubblicare).
+**Nascondere un campo dall'output** (es. email, phone) senza perderne il valore: commentarlo nello YAML. Convenzione documentata in [DATA.md](DATA.md#convenzione-commenta-per-non-pubblicare).
 
 ## CI / Pubblicazione
 

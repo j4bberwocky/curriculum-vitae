@@ -1,9 +1,12 @@
 VENV ?= .venv
 PYTHON := $(VENV)/bin/python
 
-.PHONY: all pdf site check-pages install clean distclean
+.PHONY: all pdf site check-pages test install clean distclean
 
 all: pdf check-pages site
+
+test: $(PYTHON)
+	$(PYTHON) -m pytest -q
 
 pdf: $(PYTHON)
 	$(PYTHON) cv-latex/render.py
