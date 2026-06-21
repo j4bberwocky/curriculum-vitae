@@ -14,7 +14,7 @@ CV gestito con [`cv.yaml`](cv.yaml) **alla root** come single source of truth. D
 - **Python 3** (Jinja2 + PyYAML + pypdf) per il rendering. Niente Hugo/Zola/Eleventy: i template HTML sono scritti a mano.
 - **tectonic** come engine LaTeX di default (override via env var `LATEX_ENGINE`). Bundle remoto, nessuna installazione TeX Live.
 - **Awesome-CV class** vendored in `cv-latex/awesome-cv.cls` (versione 2015 con patch — vedi sotto).
-- **Makefile** + venv automatico (`.venv/` creata al primo run di un qualunque target).
+- **Toolchain via `mise`** (`mise.toml`): mise gestisce python 3.13 + `uv`; `uv` gestisce le dipendenze (`pyproject.toml` + `uv.lock`). I target Make eseguono `uv sync` al primo run (crea la `.venv/`). `tectonic` NON è gestito da mise (brew in locale, curl in CI).
 
 Specifica funzionale: [`specs/01-init/SPEC.md`](specs/01-init/SPEC.md). Schema dati: [`specs/01-init/DATA.md`](specs/01-init/DATA.md). Piano di lavoro storico: [`specs/01-init/TASKS.md`](specs/01-init/TASKS.md).
 
@@ -54,10 +54,10 @@ cv-web/
   static/style.css            # mobile-first, 1 media query @720px
 specs/01-init/                # SPEC.md, DATA.md, TASKS.md
 .github/workflows/
-  build-pdf.yml               # ricompila e committa PDF su push
-  deploy-site.yml             # deploy GitHub Pages su push
+  build-deploy.yml            # pipeline unica: build PDF + commit + deploy sito
 Makefile
-requirements.txt
+mise.toml                     # toolchain: python + uv
+pyproject.toml + uv.lock      # dipendenze Python
 tommaso-cortonesi-cv.pdf      # output PDF (versionato)
 ```
 

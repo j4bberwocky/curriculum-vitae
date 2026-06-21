@@ -1,0 +1,83 @@
+name: Build & Deploy
+
+# Pipeline unica: builda il PDF, ne committa la versione aggiornata alla root,
+# poi builda e pubblica il sito su GitHub Pages — tutto nello stesso run, dallo
+# stesso checkout. Così il sito pubblica SEMPRE il PDF appena ricompilato (niente
+# race tra workflow separati).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cv.yaml'
+      - 'cv-latex/**'
+      - 'cv-web/**'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - 'mise.toml'
+      - 'Makefile'
+      - '.github/workflows/build-deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # build-pdf committa il PDF rigenerato indietro alla root
+  pages: write
+  id-token: write
+
+# 'tommaso-cortonesi-cv.pdf' NON è nei path trigger: il commit del PDF non deve
+# ri-triggerare il workflow. Il group 'pages' serializza anche il push del PDF.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: jdx/mise-action@v4
+
+      - name: Install tectonic
+        run: |
+          curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+          sudo mv tectonic /usr/local/bin/
+          tectonic --version
+
+      - name: Build PDF
+        run: make pdf
+
+      - name: Verify page count
+        run: make check-pages
+
+      - name: Commit updated PDF
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tommaso-cortonesi-cv.pdf
+          if git diff --staged --quiet; then
+            echo "PDF unchanged; nothing to commit"
+          else
+            git commit -m "ci: rebuild tommaso-cortonesi-cv.pdf [skip ci]"
+            git push
+          fi
+
+      - name: Build site
+        run: make site
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: cv-web/dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

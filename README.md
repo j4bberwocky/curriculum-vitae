@@ -23,16 +23,22 @@ cv-web/                      # renderer + template per il sito
   template.html.j2
   static/style.css           # CSS mobile-first
 specs/                       # specifiche e piani di lavoro
-.github/workflows/           # CI: build PDF + deploy sito
+.github/workflows/           # CI: build PDF + deploy sito (workflow unico)
 Makefile                     # orchestratore dei build
-requirements.txt             # PyYAML, Jinja2, pypdf
+mise.toml                    # toolchain: python + uv
+pyproject.toml + uv.lock     # dipendenze Python (PyYAML, Jinja2, pypdf)
 tommaso-cortonesi-cv.pdf     # output PDF (versionato)
 ```
 
 ## Prerequisiti
 
-- Python 3 (testato su 3.13)
-- [`tectonic`](https://tectonic-typesetting.github.io/) — engine LaTeX di default, single binary che scarica i pacchetti on-demand:
+- [`mise`](https://mise.jdx.dev/) — gestisce la toolchain Python (python 3.13 + `uv`). Da `mise.toml`:
+
+  ```sh
+  mise install   # installa python + uv
+  ```
+
+- [`tectonic`](https://tectonic-typesetting.github.io/) — engine LaTeX di default, single binary che scarica i pacchetti on-demand (non gestito da mise):
 
   ```sh
   brew install tectonic
@@ -42,7 +48,7 @@ tommaso-cortonesi-cv.pdf     # output PDF (versionato)
 
 ## Build locale
 
-I target Make creano automaticamente un virtualenv `.venv/` alla prima invocazione e installano le dipendenze.
+I target Make sincronizzano le dipendenze con `uv sync` (crea la `.venv/` e installa da `pyproject.toml` / `uv.lock`) alla prima invocazione.
 
 ```sh
 make all         # PDF + check pagine + sito (catena completa)
@@ -70,10 +76,12 @@ Il contenuto vive interamente in [`cv.yaml`](cv.yaml); la struttura attesa è in
 
 ## CI / Pubblicazione
 
-Due workflow su `main`:
+Un unico workflow su `main`: [`.github/workflows/build-deploy.yml`](.github/workflows/build-deploy.yml). Su cambi a `cv.yaml`, `cv-latex/**`, `cv-web/**` o alla toolchain esegue una pipeline sequenziale nello stesso run:
 
-- [`.github/workflows/build-pdf.yml`](.github/workflows/build-pdf.yml) — su cambi a `cv.yaml` o `cv-latex/**` ricompila il PDF con tectonic e lo committa indietro alla root (con `[skip ci]` per evitare loop).
-- [`.github/workflows/deploy-site.yml`](.github/workflows/deploy-site.yml) — su cambi a `cv.yaml`, `cv-web/**` o al PDF builda il sito e fa deploy su GitHub Pages via `actions/deploy-pages`.
+1. ricompila il PDF con tectonic e lo committa indietro alla root (con `[skip ci]` per evitare loop, dato che il PDF non è tra i path trigger);
+2. builda il sito (che include il PDF appena rigenerato) e fa deploy su GitHub Pages via `actions/deploy-pages`.
+
+Pipeline unica = il sito pubblica sempre il PDF della revisione corrente (niente race tra workflow separati).
 
 Setup repository richiesto una sola volta:
 
