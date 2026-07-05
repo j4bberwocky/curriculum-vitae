@@ -38,6 +38,9 @@
     {<<exp.location | e>>}
     {<<exp.start_date | e>> -- <<exp.end_date | e>>}
     {
+<% if exp.summary %>
+      {\itshape <<exp.summary | e>>}<% if exp.responsibilities %>\newline\vspace{4mm}<% endif %>
+<% endif %>
 <% if exp.responsibilities %>
       \begin{cvitems}
 <% for r in exp.responsibilities %>

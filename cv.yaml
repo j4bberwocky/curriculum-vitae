@@ -9,19 +9,21 @@ personal:
 
 summary: >
   Current Lead Product & Application Architect at Wolters Kluwer for CCH Tagetik,
-  former Solution Architect at GFT Technologies and Engineering Ingegneria Informatica.
-  16+ years experience specializing in backend and web development in Java environment
-  (JEE and Spring ecosystem), 10+ years experience in leading dev teams. Interested in
-  devising better problem-solving methods for challenging tasks, in architecting,
-  designing, testing and developing the best solution for the customer needs, and in
-  learning new technologies and tools.
+  former Solution Architect at GFT Technologies and Engineering Ingegneria Informatica, 16+ years
+  in the industry.
+  I'm a Software Architect focused on building pragmatic and evolvable systems.
+  I enjoy turning complexity into clarity, enabling teams to build what's needed now 
+  and to design for what changes next to deliver with confidence.
 
 experiences:
-  - company: CCH Tagetik
+  - company: CCH Tagetik (Wolters Kluwer)
     role: Lead Application & Product Architect
     location: Lucca, Italy
     start_date: 2025
     end_date: present
+    summary: >
+      Owning the application and product architecture of cloud-hosted SaaS products,
+      pairing hands-on design with technical leadership across engineering and IT teams.
     responsibilities:
       - "Architectural Design: create and plan architectural solutions for cloud-hosted SaaS products."
       - "Technical Leadership: guide and mentor software engineers in implementing architectural designs and strategies."
@@ -120,4 +122,4 @@ skills:
   - topic: Soft Skills
     description: Delivering effective, high-quality software solutions; coordinating, building and leading distributed teams; strong communication skills and ability to work within a distributed team.
 
-version: 0.2.0
+version: 0.3.0

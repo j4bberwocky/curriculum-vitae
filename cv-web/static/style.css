@@ -98,6 +98,13 @@ article .meta {
   color: var(--color-muted);
 }
 
+article .exp-summary {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
 article ul {
   margin: 0.25rem 0 0;
   padding-left: 1.25rem;

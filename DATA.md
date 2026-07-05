@@ -31,14 +31,17 @@ summary: >
 
 Esperienze lavorative ordinate dalla più recente alla più vecchia.
 
-| Campo              | Tipo            | Note                                       |
-|--------------------|-----------------|--------------------------------------------|
-| `company`          | string          | nome azienda o azienda — progetto          |
-| `role`             | string          | ruolo ricoperto                            |
-| `location`         | string          | città, paese                               |
-| `start_date`       | data (vedi sotto)|                                           |
-| `end_date`         | data o `present`|                                           |
-| `responsibilities` | lista di string | bullet points                              |
+| Campo              | Tipo              | Note                                       |
+|--------------------|-------------------|--------------------------------------------|
+| `company`          | string            | nome azienda o azienda — progetto          |
+| `role`             | string            | ruolo ricoperto                            |
+| `location`         | string            | città, paese                               |
+| `start_date`       | data (vedi sotto) |                                            |
+| `end_date`         | data o `present`  |                                            |
+| `summary`          | string            | **opzionale** — riga introduttiva (sotto)  |
+| `responsibilities` | lista di string   | bullet points                              |
+
+Il campo `summary` è opzionale: una frase breve di contesto sul ruolo, renderizzata in corsivo sopra i `responsibilities` (nel PDF e nel sito). Se assente viene saltata (i template usano `{% if %}`). Per nasconderla senza perderne il valore vale la stessa [convenzione "commenta per non pubblicare"](#convenzione-commenta-per-non-pubblicare). Usare il block scalar `>` per scriverla su più righe.
 
 Esempio:
 
@@ -49,6 +52,8 @@ experiences:
     location: Lucca, Italy
     start_date: 2025
     end_date: present
+    summary: >        # opzionale
+      One-line context about the role and its scope.
     responsibilities:
       - Architectural Design: ...
       - Technical Leadership: ...
