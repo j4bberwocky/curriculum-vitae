@@ -63,11 +63,13 @@ experiences:
 
 Titoli di studio e certificazioni. Stesso schema, ordinato dal più recente.
 
-| Campo         | Tipo   | Note                                         |
-|---------------|--------|----------------------------------------------|
-| `institution` | string | università o ente certificatore              |
-| `degree`      | string | titolo o nome certificazione                  |
-| `date`        | data   | una sola data (anno o anno-mese)             |
+| Campo         | Tipo   | Note                                             |
+|---------------|--------|--------------------------------------------------|
+| `degree`      | string | titolo o nome certificazione                     |
+| `institution` | string | **opzionale** — università o ente certificatore  |
+| `date`        | data   | **opzionale** — una sola data (anno o anno-mese) |
+
+`institution` e `date` sono opzionali: se assenti i template li saltano (`{% if %}`). Utile per voci compatte come una riga unica di certificazioni (solo `degree`).
 
 ## `skills` (lista di oggetti)
 

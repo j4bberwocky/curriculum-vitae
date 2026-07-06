@@ -52,7 +52,7 @@
     {% for edu in education %}
     <article>
       <h3>{{ edu.degree }}</h3>
-      <p class="meta">{{ edu.institution }} · {{ edu.date }}</p>
+      {% if edu.institution or edu.date %}<p class="meta">{{ edu.institution }}{% if edu.institution and edu.date %} · {% endif %}{{ edu.date }}</p>{% endif %}
     </article>
     {% endfor %}
   </section>

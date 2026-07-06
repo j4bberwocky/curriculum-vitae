@@ -8,118 +8,107 @@ personal:
   github: github.com/j4bberwocky
 
 summary: >
-  Current Lead Product & Application Architect at Wolters Kluwer for CCH Tagetik,
-  former Solution Architect at GFT Technologies and Engineering Ingegneria Informatica, 16+ years
-  in the industry.
-  I'm a Software Architect focused on building pragmatic and evolvable systems.
-  I enjoy turning complexity into clarity, enabling teams to build what's needed now 
-  and to design for what changes next to deliver with confidence.
+  Software Architect who treats architecture as a living system. I build what's needed now
+  and design for what changes next, delivering pragmatic, evolvable solutions across 16 years
+  in banking and finance.
 
 experiences:
   - company: CCH Tagetik (Wolters Kluwer)
     role: Lead Application & Product Architect
-    location: Lucca, Italy
+    location: Lucca
     start_date: 2025
     end_date: present
     summary: >
-      Owning the application and product architecture of cloud-hosted SaaS products,
-      pairing hands-on design with technical leadership across engineering and IT teams.
+      I own cross-team architecture in a SAFe org (Solutions + Reporting, 7 teams) for a
+      multi-tenant SaaS platform, applying secure-by-design in partnership with the SOC team.
     responsibilities:
-      - "Architectural Design: create and plan architectural solutions for cloud-hosted SaaS products."
-      - "Technical Leadership: guide and mentor software engineers in implementing architectural designs and strategies."
-      - "Design Development: develop and validate high-level application designs and prototypes."
-      - "Collaboration: work with IT teams on deployment architecture and process automation."
+      - >
+        I designed the integration of licensed third-party libraries (e.g. Flexmonster) to
+        serve three deployment models — SaaS, BYOC and on-prem — from a single architecture,
+        favoring substitutability over deployment-specific forks.
+      - >
+        I defined and drove a cross-team technical-debt remediation plan, sequencing payback
+        against delivery to keep refactoring sustainable.
+      - >
+        I re-architected an agentic document pipeline by extracting deterministic OCR
+        (Tesseract + PDFBox) into a dedicated microservice instead of one centralized LLM
+        agent — halving production token cost and cutting end-to-end latency ~40% — keeping
+        deterministic and probabilistic components clearly separated (also RAG docs, data lineage).
 
   - company: Allitude
     role: Lead Solution Architect
-    location: Trento, Italy
+    location: Trento
     start_date: 2024
     end_date: 2025
+    summary: >
+      I led the modernization of core-banking / Wealth Management services for a banking
+      consortium, coordinating 3 solution architects.
     responsibilities:
-      - Project focused on modernizing all core banking services for the bank consortium.
-      - Leader of a group of 3 solution architects.
-      - Led the team in defining technical solutions, estimation and best practices for the modernization of Wealth Management systems.
-      - Integrated modernized systems with legacy services, adopted the BIAN framework for design.
-      - "Technologies: Microservice Architecture with Spring Boot, Spring Batch, Angular, Git, OpenShift."
+      - >
+        I integrated modernized microservices with legacy systems through an incremental,
+        strangler-style approach — designing for replaceability over big-bang rewrite, and
+        using BIAN to keep business domains interchangeable.
 
-  - company: Intesa San Paolo — Data Governance Portal 2.0
-    role: Solution Architect and Technical Leader
-    location: Turin, Italy
+  - company: GFT @ Intesa Sanpaolo — Data Governance Portal 2.0
+    role: Solution Architect
+    location: Turin
     start_date: 2022
     end_date: 2024
+    summary: >
+      I led the redesign of a bank's data-governance platform across distributed
+      multi-country teams in a regulated environment.
     responsibilities:
-      - Technical guide for the redesign of the bank data governance portal, with the integration of data governance and data quality tools.
-      - Led 4 remote multi-country teams to develop the front-end layer, back-end API layer and batch layer.
-      - Estimated and planned activities with various stakeholders, providing technical choices.
-      - "Technologies: Microservice Architecture with Spring Boot, Spring Batch, Angular 8, Git, OpenShift."
+      - >
+        I designed a self-registering batch framework (Spring Batch) that centralized job
+        lifecycle, scheduling, monitoring and inter-job dependency control (semaphore), so new
+        jobs only implement their own logic — the suite grew from 4 to ~25 heterogeneous jobs
+        with near-zero per-job integration effort.
+      - >
+        I left a healthy, self-sustaining platform still in active production after my
+        departure — designed to outlive its architect.
 
-  - company: Municipality of Florence — Building and Environmental Permits
+  - company: Municipality of Florence
     role: Solution Architect
-    location: Florence, Italy
     start_date: 2019
     end_date: 2021
-    responsibilities:
-      - Architected, designed and developed a web app to manage building and environmental practices.
-      - Led a team of 4 people.
-      - Estimated and planned activities, providing technical support.
-      - "Technologies: Maven, Spring ecosystem, PrimeFaces, SVN, Docker, Activiti, Alfresco."
+    summary: >
+      I architected and led (team of 4) a web application for building and environmental
+      permits, on the Spring ecosystem with Activiti (BPM) and Alfresco.
 
-  - company: Banca Mediolanum — Services for Financial Advisors
-    role: Senior Solution Developer
-    location: Milan, Italy
+  - company: Banca Mediolanum
+    role: Senior Solution Developer & Team Leader
     start_date: 2015
     end_date: 2019
-    responsibilities:
-      - Analysis, design, development and testing of web applications for bank promoters (investment and insurance products).
-      - Led a team of 8 people in charge of both AM and new feature development.
-      - Estimated and planned activities, providing technical support.
-      - Trained other team members on the technologies in use.
-      - "Technologies: JSP, EJB 3.0, WebLogic 10, Jenkins, Git."
+    summary: >
+      My first leadership role: I led an 8-person team through a COBOL-to-Java transition,
+      planning delivery and interfacing directly with management, architects, bank
+      stakeholders and vendors — and my first hands-on exposure to DevOps.
 
-  - company: Municipality of Milan — Educative Services
+  - company: Municipality of Milan
     role: Solution Developer
-    location: Milan, Italy
     start_date: 2013
     end_date: 2015
-    responsibilities:
-      - Developed, maintained and supported a web application that manages registrations to nursery schools and kindergartens.
-      - "Technologies: JSP, Tomcat, Ant, SVN."
+    summary: Web app for nursery/kindergarten enrollment (JSP, Tomcat).
 
-  - company: Banca Monte dei Paschi di Siena — PaschiFace
+  - company: Banca Monte dei Paschi di Siena
     role: Junior Solution Developer
-    location: Siena, Italy
     start_date: 2010
     end_date: 2013
-    responsibilities:
-      - Developed backend components (EJB) inside a SOA architecture for bank transfer services.
-      - "Technologies: EJB 3.0, Spring, JBoss, MyBatis, WebSphere AS, SVN."
+    summary: Backend EJB components within a SOA for bank-transfer services.
 
 education:
-  - institution: Google Cloud
-    degree: Associate Cloud Engineer
-    date: 2022
-  - institution: Pivotal Software, Inc.
-    degree: Pivotal Certified Spring Professional
-    date: 2020
-  - institution: Amazon Web Services
-    degree: AWS Certified Developer — Associate
-    date: 2022
-  - institution: Oracle
-    degree: Certified Master — Java EE 6 Enterprise Architect
-    date: 2017
-  - institution: University of Siena, Italy
-    degree: M.S. in Mathematics
-    date: 2009
-  - institution: University of Siena, Italy
-    degree: B.S. in Mathematics
-    date: 2006
+  - institution: University of Siena
+    degree: M.S. & B.S. in Mathematics
+  - degree: "Certifications: Pivotal Certified Spring Professional · AWS & GCP (cloud foundations)"
 
 skills:
-  - topic: Programming Languages
-    description: Java, Go, Python (basic)
-  - topic: Technologies
-    description: Spring, Spring Boot, Tomcat, WebLogic, MyBatis, JPA, Eclipse IDE, Maven, Git, SVN, Docker, Oracle DB, Sybase, AWS, Google Cloud Platform
-  - topic: Soft Skills
-    description: Delivering effective, high-quality software solutions; coordinating, building and leading distributed teams; strong communication skills and ability to work within a distributed team.
+  - topic: Architecture & Design
+    description: Evolutionary architecture · microservices · modular monolith · event-driven · secure-by-design · tech-debt management
+  - topic: Core Stack
+    description: Java · Spring / Spring Boot / Spring Batch · JPA
+  - topic: Cloud & Delivery
+    description: AWS · GCP · OpenShift · Docker · CI/CD
+  - topic: Data
+    description: Oracle · Sybase · data lake
 
-version: 0.3.0
+version: 1.0.0
