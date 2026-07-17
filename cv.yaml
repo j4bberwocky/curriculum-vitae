@@ -91,7 +91,7 @@ experiences:
     end_date: 2015
     summary: Web app for nursery/kindergarten enrollment (JSP, Tomcat).
 
-  - company: Engineering Ingegneria Informatica SPA @ Banca Monte dei Paschi di Siena - Pashi Face
+  - company: Engineering Ingegneria Informatica SPA @ Banca Monte dei Paschi di Siena - PashiFace
     role: Junior Solution Developer
     start_date: 2010
     end_date: 2013
@@ -103,12 +103,12 @@ education:
 
 skills:
   - topic: Architecture & Design
-    description: Evolutionary architecture, microservices, modular monolith, event-driven, agentic & LLM-based system, secure-by-design, tech-debt management
+    description: Evolutionary architecture, microservices, modular monolith, event-driven, agentic & LLM-based systems, secure-by-design, tech-debt management
   - topic: AI-assisted engineering
     description: GitHub Copilot, Claude Code, open-spec (SDD)
   - topic: Core Stack
     description: Java / Spring / Spring Boot / Spring Batch / JPA
   - topic: Cloud & Delivery
-    description: AWS · GCP · OpenShift · Docker · CI/CD
+    description: AWS, Azure, Docker, CI/CD
 
-version: 2.0.0
+version: 2.0.1
