@@ -8,10 +8,10 @@ personal:
   github: github.com/j4bberwocky
 
 summary: >
-  Lead Product & Application Architect at Wolters Kluwer (CCH Tagetik), former Solution Architect at 
-  GFT and Engineering. With 16+ years of experience in the banking and finance industry, I treat 
-  architecture as a living system. I focus on turning complexity into clarity—building what’s needed 
-  now and designing for what changes next to deliver pragmatic, evolvable systems with confidence.
+  Lead Product & Application Architect at Wolters Kluwer (CCH Tagetik) with 16+ years of experience 
+  in the banking and finance industry, I treat architecture as a living system. I focus on 
+  turning complexity into clarity—building what’s needed now and designing for what 
+  changes next to deliver pragmatic, evolvable systems with confidence.
 
 experiences:
   - company: CCH Tagetik (Wolters Kluwer)
@@ -36,7 +36,7 @@ experiences:
         agent (halving production token cost and cutting end-to-end latency ~40%) keeping
         deterministic and probabilistic components clearly separated.
 
-  - company: GFT Technologies @ Allitude (Cassa Centrale Banca) - Core Banking Modernization
+  - company: GFT @ Allitude - Core Banking Modernization
     role: Lead Solution Architect
     location: Trento
     start_date: 2024
@@ -50,7 +50,7 @@ experiences:
         strangler-style approach, designing for replaceability over big-bang rewrite, and
         using BIAN to keep business domains interchangeable.
 
-  - company: GFT Technologies @ Intesa Sanpaolo - Data Governance Portal 2.0
+  - company: GFT @ Intesa Sanpaolo - Data Governance Portal 2.0
     role: Solution Architect
     location: Turin
     start_date: 2022
@@ -68,7 +68,7 @@ experiences:
         I left a healthy, self-sustaining platform still in active production after my
         departure, designed to outlive its architect.
 
-  - company: Engineering Ingegneria Informatica SPA @ Municipality of Florence - Environmental Permits
+  - company: Engineering @ Municipality of Florence - Environmental Permits
     role: Solution Architect
     start_date: 2019
     end_date: 2021
@@ -76,7 +76,7 @@ experiences:
       I architected and led (team of 4) a web application for building and environmental
       permits, on the Spring ecosystem with Activiti (BPM) and Alfresco.
 
-  - company: Engineering Ingegneria Informatica SPA @ Banca Mediolanum
+  - company: Engineering @ Banca Mediolanum
     role: Senior Solution Developer & Team Leader
     start_date: 2015
     end_date: 2019
@@ -85,17 +85,27 @@ experiences:
       planning delivery and interfacing directly with management, architects, bank
       stakeholders and vendors; also my first hands-on exposure to DevOps.
 
-  - company: Engineering Ingegneria Informatica SPA @ Municipality of Milan - Nursery Enrollment
-    role: Solution Developer
-    start_date: 2013
-    end_date: 2015
-    summary: Web app for nursery/kindergarten enrollment (JSP, Tomcat).
+#  - company: Engineering @ Municipality of Milan - Nursery Enrollment
+#    role: Solution Developer
+#    start_date: 2013
+#    end_date: 2015
+#    summary: Web app for nursery/kindergarten enrollment (JSP, Tomcat).
+#
+#  - company: Engineering @ Banca Monte dei Paschi di Siena - Pashi Face
+#    role: Junior Solution Developer
+#    start_date: 2010
+#    end_date: 2013
+#    summary: Backend EJB components within a SOA for bank-transfer services.
 
-  - company: Engineering Ingegneria Informatica SPA @ Banca Monte dei Paschi di Siena - PashiFace
-    role: Junior Solution Developer
+  - company: Early Career
+    role: Solution Developer
     start_date: 2010
-    end_date: 2013
-    summary: Backend EJB components within a SOA for bank-transfer services.
+    end_date: 2015
+    responsibilities:
+      - >
+        Solution Developer - Engineering @ Municipality of Milan: nursery-enrollment web app
+      - >
+        Junior Developer - Engineering @ Banca MPS: EJB backend components in a SOA for bank transfers
 
 education:
   - institution: University of Siena
@@ -103,7 +113,9 @@ education:
 
 skills:
   - topic: Architecture & Design
-    description: Evolutionary architecture, microservices, modular monolith, event-driven, agentic & LLM-based systems, secure-by-design, tech-debt management
+    description: > 
+      Evolutionary architecture, microservices, modular monolith, event-driven, agentic & 
+      LLM-based systems, secure-by-design, tech-debt management
   - topic: AI-assisted engineering
     description: GitHub Copilot, Claude Code, open-spec (SDD)
   - topic: Core Stack
@@ -111,4 +123,4 @@ skills:
   - topic: Cloud & Delivery
     description: AWS, Azure, Docker, CI/CD
 
-version: 2.0.1
+version: 2.0.2
