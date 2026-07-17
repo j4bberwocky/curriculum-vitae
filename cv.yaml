@@ -1,7 +1,7 @@
 personal:
   name: Tommaso Cortonesi
   title: Software Architect
-  # Unpublished by choice — uncomment to expose in PDF/site outputs.
+  # Unpublished by choice - uncomment to expose in PDF/site outputs.
   # email: tommaso.cortonesi@gmail.com
   # phone: +39 328 8731860
   linkedin: linkedin.com/in/tommaso-cortonesi
@@ -23,8 +23,8 @@ experiences:
       multi-tenant SaaS platform, applying secure-by-design in partnership with the SOC team.
     responsibilities:
       - >
-        I designed the integration of licensed third-party libraries (e.g. Flexmonster) to
-        serve three deployment models — SaaS, BYOC and on-prem — from a single architecture,
+        I designed the integration of licensed third-party libraries to
+        serve three deployment models (SaaS, BYOC and on-prem) from a single architecture,
         favoring substitutability over deployment-specific forks.
       - >
         I defined and drove a cross-team technical-debt remediation plan, sequencing payback
@@ -32,24 +32,24 @@ experiences:
       - >
         I re-architected an agentic document pipeline by extracting deterministic OCR
         (Tesseract + PDFBox) into a dedicated microservice instead of one centralized LLM
-        agent — halving production token cost and cutting end-to-end latency ~40% — keeping
-        deterministic and probabilistic components clearly separated (also RAG docs, data lineage).
+        agent (halving production token cost and cutting end-to-end latency ~40%) keeping
+        deterministic and probabilistic components clearly separated.
 
-  - company: Allitude
+  - company: GFT Technologies @ Allitude (Cassa Centrale Banca) - Core Banking Modernization
     role: Lead Solution Architect
     location: Trento
     start_date: 2024
     end_date: 2025
     summary: >
-      I led the modernization of core-banking / Wealth Management services for a banking
+      I led the modernization of core-banking / Wealth Management services for the banking
       consortium, coordinating 3 solution architects.
     responsibilities:
       - >
         I integrated modernized microservices with legacy systems through an incremental,
-        strangler-style approach — designing for replaceability over big-bang rewrite, and
+        strangler-style approach, designing for replaceability over big-bang rewrite, and
         using BIAN to keep business domains interchangeable.
 
-  - company: GFT @ Intesa Sanpaolo — Data Governance Portal 2.0
+  - company: GFT Technologies @ Intesa Sanpaolo - Data Governance Portal 2.0
     role: Solution Architect
     location: Turin
     start_date: 2022
@@ -61,13 +61,13 @@ experiences:
       - >
         I designed a self-registering batch framework (Spring Batch) that centralized job
         lifecycle, scheduling, monitoring and inter-job dependency control (semaphore), so new
-        jobs only implement their own logic — the suite grew from 4 to ~25 heterogeneous jobs
+        jobs only implement their own logic - the suite grew from 4 to ~25 heterogeneous jobs
         with near-zero per-job integration effort.
       - >
         I left a healthy, self-sustaining platform still in active production after my
-        departure — designed to outlive its architect.
+        departure, designed to outlive its architect.
 
-  - company: Municipality of Florence
+  - company: Engineering Ingegneria Informatica SPA @ Municipality of Florence - Environmental Permits
     role: Solution Architect
     start_date: 2019
     end_date: 2021
@@ -75,22 +75,22 @@ experiences:
       I architected and led (team of 4) a web application for building and environmental
       permits, on the Spring ecosystem with Activiti (BPM) and Alfresco.
 
-  - company: Banca Mediolanum
+  - company: Engineering Ingegneria Informatica SPA @ Banca Mediolanum
     role: Senior Solution Developer & Team Leader
     start_date: 2015
     end_date: 2019
     summary: >
       My first leadership role: I led an 8-person team through a COBOL-to-Java transition,
       planning delivery and interfacing directly with management, architects, bank
-      stakeholders and vendors — and my first hands-on exposure to DevOps.
+      stakeholders and vendors; also my first hands-on exposure to DevOps.
 
-  - company: Municipality of Milan
+  - company: Engineering Ingegneria Informatica SPA @ Municipality of Milan - Nursery Enrollment
     role: Solution Developer
     start_date: 2013
     end_date: 2015
     summary: Web app for nursery/kindergarten enrollment (JSP, Tomcat).
 
-  - company: Banca Monte dei Paschi di Siena
+  - company: Engineering Ingegneria Informatica SPA @ Banca Monte dei Paschi di Siena - Pashi Face
     role: Junior Solution Developer
     start_date: 2010
     end_date: 2013
@@ -99,16 +99,15 @@ experiences:
 education:
   - institution: University of Siena
     degree: M.S. & B.S. in Mathematics
-  - degree: "Certifications: Pivotal Certified Spring Professional · AWS & GCP (cloud foundations)"
 
 skills:
   - topic: Architecture & Design
-    description: Evolutionary architecture · microservices · modular monolith · event-driven · secure-by-design · tech-debt management
+    description: Evolutionary architecture, microservices, modular monolith, event-driven, agentic & LLM-based system, secure-by-design, tech-debt management
+  - topic: AI-assisted engineering
+    description: GitHub Copilot, Claude Code, open-spec (SDD)
   - topic: Core Stack
-    description: Java · Spring / Spring Boot / Spring Batch · JPA
+    description: Java / Spring / Spring Boot / Spring Batch / JPA
   - topic: Cloud & Delivery
     description: AWS · GCP · OpenShift · Docker · CI/CD
-  - topic: Data
-    description: Oracle · Sybase · data lake
 
-version: 1.0.0
+version: 2.0.0
