@@ -5,6 +5,18 @@
 \fontdir[fonts/]
 \colorlet{awesome}{awesome-red}
 
+% Compaction: tighter margins + section spacing to keep the CV on a single page.
+\geometry{left=2.0cm, top=0.8cm, right=2.0cm, bottom=1.0cm, footskip=.4cm}
+\setlength{\parskip}{2pt}
+\renewcommand{\acvSectionContentTopSkip}{1mm}
+<% raw %>\renewcommand{\cvsection}[1]{%
+  \par\addvspace{0.9ex}%
+  \phantomsection{}%
+  \sectionstyle{#1}%
+  \color{gray}\vhrulefill{0.9pt}%
+  \par\nobreak\addvspace{0.45ex}%
+}<% endraw %>
+
 \name{<<personal.first_name | e>>}{<<personal.last_name | e>>}
 <% if personal.title %>\position{<<personal.title | e>>}<% endif %>
 <% if personal.phone %>\mobile{<<personal.phone | e>>}<% endif %>
